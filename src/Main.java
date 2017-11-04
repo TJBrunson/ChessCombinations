@@ -56,7 +56,6 @@ public class Main {
 				for(int i=0;i<16;i++) {
 					if(randPiece == pieceUsed[i]) {
 						isUsed=true;
-						System.out.println("random piece used");
 					}
 				}
 				
@@ -79,14 +78,14 @@ public class Main {
 				finishedPlacing=true;
 			}
 			//to print used counter
-			for(int i=0; i<16; i++) {
+			/*for(int i=0; i<16; i++) {
 				System.out.print(pieceUsed[i] + "   ");
 				
 			}
-			System.out.println();
+			System.out.println();*/
 			
 			
-			//to check if all places are filled
+			//check how many pieces were placed
 			for(int i=0; i<8; i++) {
 				for(int k=0; k<8; k++) {
 					if(board[i][k] == "E") {
@@ -94,9 +93,13 @@ public class Main {
 					}
 				}
 			}
-			System.out.println(fpCounter);
+			
+			if(finishedPlacing==true) {
+				System.out.println(fpCounter);
+			}
 			fpCounter=0;
 		}//end while
+		
 		printBoard(board);
 		pieceCount(board);
 		

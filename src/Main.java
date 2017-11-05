@@ -1,4 +1,3 @@
-
 import java.security.SecureRandom;
 
 
@@ -102,6 +101,7 @@ public class Main {
 		
 		printBoard(board);
 		pieceCount(board);
+		CheckCheck.checkInit(board);
 		
 	}
 	

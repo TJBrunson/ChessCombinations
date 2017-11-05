@@ -100,7 +100,7 @@ public class Main {
 		}//end while
 		
 		printBoard(board);
-		pieceCount(board);
+		//pieceCount(board);
 		CheckCheck.checkInit(board);
 		
 	}

@@ -101,6 +101,7 @@ public class Main {
 		
 		printBoard(board);
 		//pieceCount(board);
+		//test();
 		CheckCheck.checkInit(board);
 		
 	}
@@ -111,7 +112,7 @@ public class Main {
 		
 		for(int i=0; i<8; i++) {
 			for(int k=0; k<8; k++) {
-				System.out.print(boardToPrint[i][k] + "         ");
+				System.out.printf("%-10s", boardToPrint[i][k]);
 			}
 			System.out.println();
 			System.out.println();
@@ -189,4 +190,18 @@ public class Main {
 		System.out.println("white queen: " + wqueen);
 	}
 	
+	private static void test() {
+		int[][] thing = new int[8][8];
+		int counter=1;
+		
+		for(int i=0; i<thing.length; i++) {
+			for(int k=0; k<thing.length; k++) {
+				thing[i][k] = counter;
+				System.out.printf("%-10s", thing[i][k]);
+				counter++;
+			}
+			System.out.println();
+			System.out.println();
+		}
+	}
 }

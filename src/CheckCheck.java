@@ -35,18 +35,27 @@ public class CheckCheck {
 		
 		boolean inCheck = diagonalCheckUL(board, kingPosition); 
 		if(inCheck == true) {
+			System.out.println("DIAGONAL CHECK UL");
 			return true;
 		}
 		inCheck = diagonalCheckUR(board,kingPosition);
 		if(inCheck == true) {
+			System.out.println("DIAGONAL CHECK UR");
 			return true;
 		}
 		inCheck = diagonalCheckDL(board,kingPosition);
 		if(inCheck == true) {
+			System.out.println("DIAGONAL CHECK DL");
 			return true;
 		}
 		inCheck = diagonalCheckDR(board,kingPosition);
 		if(inCheck == true) {
+			System.out.println("DIAGONAL CHECK DR");
+			return true;
+		}
+		inCheck = rookCheck(board,kingPosition);
+		if(inCheck == true) {
+			System.out.println("ROOK CHECK");
 			return true;
 		}
 		
@@ -142,18 +151,18 @@ public class CheckCheck {
 		int[] checkPos = new int[2];
 		checkPos[0] = kingPos[0];
 		checkPos[1] = kingPos[1];
-		System.out.println(checkPos[0]);
-		System.out.println(checkPos[1]);
-		System.out.println();
+		//System.out.println(checkPos[0]);
+		//System.out.println(checkPos[1]);
+		//System.out.println();
 		
 		boolean firstRun = true;
 		while(checkPos[0] >= 1 && checkPos[1]<7) {
 			checkPos[0]= checkPos[0]-1;
 			checkPos[1]= checkPos[1]+1;
 			
-			System.out.println(checkPos[0]);
-			System.out.println(checkPos[1]);
-			System.out.println();
+			//System.out.println(checkPos[0]);
+			//System.out.println(checkPos[1]);
+			//System.out.println();
 			
 			if(firstRun==true && board[checkPos[1]][checkPos[0]] == "Wpawn") {
 				System.out.println("Check found pawn " + board[checkPos[1]][checkPos[0]]+ ' ' + checkPos[0] + ' ' + checkPos[1]);
@@ -183,18 +192,18 @@ public class CheckCheck {
 		int[] checkPos = new int[2];
 		checkPos[0] = kingPos[0];
 		checkPos[1] = kingPos[1];
-		System.out.println(checkPos[0]);
-		System.out.println(checkPos[1]);
-		System.out.println();
+		//System.out.println(checkPos[0]);
+		//System.out.println(checkPos[1]);
+		//System.out.println();
 		
 		boolean firstRun = true;
 		while(checkPos[0] < 7 && checkPos[1]<7) {
 			checkPos[0]= checkPos[0]+1;
 			checkPos[1]= checkPos[1]+1;
 			
-			System.out.println(checkPos[0]);
-			System.out.println(checkPos[1]);
-			System.out.println();
+			//System.out.println(checkPos[0]);
+			//System.out.println(checkPos[1]);
+			//System.out.println();
 			
 			if(firstRun==true && board[checkPos[1]][checkPos[0]] == "Wpawn") {
 				System.out.println("Check found pawn " + board[checkPos[1]][checkPos[0]]+ ' ' + checkPos[0] + ' ' + checkPos[1]);
@@ -216,4 +225,113 @@ public class CheckCheck {
 		System.out.println("All EZ");
 		return false;
 	}
+
+    //check for rook
+    private static boolean rookCheck(String[][] board, int[] kingPos) {
+    	
+    		
+    		//set check variables so kingPos can stay constant
+    		int[] checkPos = new int[2];
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		//left 1, up 2
+    		if(checkPos[0] > 0 && checkPos[1]>1) {
+    			checkPos[0] = checkPos[0]-1;
+    			checkPos[1] = checkPos[1]-2;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}//end left 1, up 2
+    		
+    		//left 1, down 2
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		if(checkPos[0]>0 && checkPos[1]<6) {
+    			checkPos[0] = checkPos[0]-1;
+    			checkPos[1] = checkPos[1]+2;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}
+    		
+    		//left 2, down 1
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		if(checkPos[0]>1 && checkPos[1]<7) {
+    			checkPos[0] = checkPos[0]-2;
+    			checkPos[1] = checkPos[1]+1;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}
+    		
+    		//left 2, up 1
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		if(checkPos[0]>1 && checkPos[1]>0) {
+    			checkPos[0] = checkPos[0]-2;
+    			checkPos[1] = checkPos[1]-1;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}
+    		
+    		//right 1, up 2
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		if(checkPos[0]<7 && checkPos[1]>1) {
+    			checkPos[0] = checkPos[0]+1;
+    			checkPos[1] = checkPos[1]-2;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}
+    		
+    		//right 1, down 2
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		if(checkPos[0]<7 && checkPos[1]<6) {
+    			checkPos[0] = checkPos[0]+1;
+    			checkPos[1] = checkPos[1]+2;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}
+    		
+    		//right 2, up 1
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		if(checkPos[0]<6 && checkPos[1]>0) {
+    			checkPos[0] = checkPos[0]+2;
+    			checkPos[1] = checkPos[1]-1;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}
+    		
+    		//right 2, down 1
+    		checkPos[0] = kingPos[0];
+    		checkPos[1] = kingPos[1];
+    		if(checkPos[0]<6 && checkPos[1]<7) {
+    			checkPos[0] = checkPos[0]+2;
+    			checkPos[1] = checkPos[1]+1;
+    			System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
+    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    				return true;
+    			}
+    		}
+    		
+    		return false;
+    }
 }

@@ -59,6 +59,7 @@ public class CheckCheck {
 			return true;
 		}
 		
+		System.out.println("NO CHECKS");
 		return false;
 	}//end checker
 	

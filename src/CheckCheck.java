@@ -53,9 +53,14 @@ public class CheckCheck {
 			System.out.println("DIAGONAL CHECK DR");
 			return true;
 		}
-		inCheck = rookCheck(board,kingPosition);
+		inCheck = knightCheck(board,kingPosition);
 		if(inCheck == true) {
-			System.out.println("ROOK CHECK");
+			System.out.println("KNIGHT CHECK");
+			return true;
+		}
+		inCheck = uDLRCheck(board,kingPosition);
+		if(inCheck == true) {
+			System.out.println("UDLR CHECK");
 			return true;
 		}
 		
@@ -228,7 +233,7 @@ public class CheckCheck {
 	}
 
     //check for rook
-    private static boolean rookCheck(String[][] board, int[] kingPos) {
+    private static boolean knightCheck(String[][] board, int[] kingPos) {
     	
     		
     		//set check variables so kingPos can stay constant
@@ -335,4 +340,77 @@ public class CheckCheck {
     		
     		return false;
     }
-}
+
+    private static boolean uDLRCheck(String[][] board, int[] kingPos) {
+    	
+    		//set check variables so kingPos can stay constant
+		int[] checkPos = new int[2];
+		checkPos[0] = kingPos[0];
+		checkPos[1] = kingPos[1];
+		
+		//check up
+		while(checkPos[1]>0) {
+			checkPos[1]=checkPos[1]-1;
+			
+			if(board[checkPos[1]][checkPos[0]] == "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook") {
+				System.out.println("Up Check: " + board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1]);
+				return true;
+			}//end if check
+			else if(board[checkPos[1]][checkPos[0]] != "E" && (board[checkPos[1]][checkPos[0]] != "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook")) {
+				System.out.println("no check up");
+				break;
+			}
+		}// end up while
+		
+		//reset checkPos and check left
+		checkPos[0] = kingPos[0];
+		checkPos[1] = kingPos[1];
+		while(checkPos[0]>0) {
+			checkPos[0]-=1;
+			
+			if(board[checkPos[1]][checkPos[0]] == "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook") {
+				System.out.println("Left Check: " + board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1]);
+				return true;
+			}//end if check
+			else if(board[checkPos[1]][checkPos[0]] != "E" && (board[checkPos[1]][checkPos[0]] != "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook")) {
+				System.out.println("no check left");
+				break;
+			}
+		}//end left check while
+		
+		//reset checkPos and check down
+		checkPos[0] = kingPos[0];
+		checkPos[1] = kingPos[1];
+		while(checkPos[1]<7) {
+			checkPos[1]+=1;
+			
+			if(board[checkPos[1]][checkPos[0]] == "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook") {
+				System.out.println("Down Check: " + board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1]);
+				return true;
+			}//end if check
+			else if(board[checkPos[1]][checkPos[0]] != "E" && (board[checkPos[1]][checkPos[0]] != "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook")) {
+				System.out.println("no check down");
+				break;
+			}
+		}//end down check while
+		
+		//reset checkPos and check right
+		checkPos[0] = kingPos[0];
+		checkPos[1] = kingPos[1];
+		while(checkPos[0]<7) {
+			checkPos[0]+=1;
+			
+			if(board[checkPos[1]][checkPos[0]] == "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook") {
+				System.out.println("Right Check: " + board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1]);
+				return true;
+			}//end if check
+			else if(board[checkPos[1]][checkPos[0]] != "E" && (board[checkPos[1]][checkPos[0]] != "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook")) {
+				System.out.println("no check Right");
+				break;
+			}
+		}//end right check while
+				
+    		return false;
+    }//end UDLR checks
+
+}//end CheckCheck

@@ -5,7 +5,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		double numberOfRounds=10000000;
+		double numberOfRounds=1000000;
 		double checksCounter = 0;
 		
 		for(int i=1; i<numberOfRounds; i++) {

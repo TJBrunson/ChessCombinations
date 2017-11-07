@@ -233,7 +233,7 @@ public class CheckCheck {
 		return false;
 	}
 
-    //check for rook
+    //check for knight
     private static boolean knightCheck(String[][] board, int[] kingPos) {
     	
     		
@@ -247,7 +247,7 @@ public class CheckCheck {
     			checkPos[1] = checkPos[1]-2;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
     			
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}//end left 1, up 2
@@ -260,7 +260,7 @@ public class CheckCheck {
     			checkPos[1] = checkPos[1]+2;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
     			
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}
@@ -272,7 +272,7 @@ public class CheckCheck {
     			checkPos[0] = checkPos[0]-2;
     			checkPos[1] = checkPos[1]+1;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}
@@ -284,7 +284,7 @@ public class CheckCheck {
     			checkPos[0] = checkPos[0]-2;
     			checkPos[1] = checkPos[1]-1;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}
@@ -297,7 +297,7 @@ public class CheckCheck {
     			checkPos[1] = checkPos[1]-2;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
     			
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}
@@ -310,7 +310,7 @@ public class CheckCheck {
     			checkPos[1] = checkPos[1]+2;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
     			
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}
@@ -322,7 +322,7 @@ public class CheckCheck {
     			checkPos[0] = checkPos[0]+2;
     			checkPos[1] = checkPos[1]-1;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}
@@ -334,7 +334,7 @@ public class CheckCheck {
     			checkPos[0] = checkPos[0]+2;
     			checkPos[1] = checkPos[1]+1;
     			//System.out.println(board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1] );
-    			if(board[checkPos[1]][checkPos[0]] == "Wrook") {
+    			if(board[checkPos[1]][checkPos[0]] == "Wknight") {
     				return true;
     			}
     		}
@@ -358,7 +358,8 @@ public class CheckCheck {
 				//System.out.println("Up Check: " + board[checkPos[1]][checkPos[0]] + ' ' + checkPos[0] + ' ' + checkPos[1]);
 				return true;
 			}//end if check
-			else if(board[checkPos[1]][checkPos[0]] != "E" && (board[checkPos[1]][checkPos[0]] != "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook")) {
+			else if(board[checkPos[1]][checkPos[0]] != "E" && 
+					(board[checkPos[1]][checkPos[0]] != "Wqueen" || board[checkPos[1]][checkPos[0]] == "Wrook")) {
 				//System.out.println("no check up");
 				break;
 			}
